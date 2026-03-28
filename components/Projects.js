@@ -69,8 +69,16 @@ function ProjectPreview({ project }) {
 
 function ProjectCard({ project, index }) {
   const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
   const isEven = index % 2 === 0;
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <motion.div
@@ -78,69 +86,94 @@ function ProjectCard({ project, index }) {
       initial={{ opacity: 0, y: 48 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: (index % PER_PAGE) * 0.1 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => !isMobile && setHovered(true)}
+      onMouseLeave={() => !isMobile && setHovered(false)}
       className="relative rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-500 bg-white"
-      style={{ minHeight: 420 }}
     >
-      <div className="flex" style={{ minHeight: 420 }}>
-
-        {/* ── PREVIEW SIDE ── */}
-        <motion.div
-          animate={{ width: hovered ? '100%' : '50%' }}
-          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-          className={`relative overflow-hidden flex-shrink-0 ${isEven ? 'order-1' : 'order-2'}`}
-          style={{ minHeight: 420 }}
-        >
-          <div className="absolute top-0 inset-x-0 h-1 z-20" style={{ background: project.color }} />
-
-          <ProjectPreview project={project} />
-
-          <AnimatePresence>
-            {hovered && (
-              <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="absolute inset-0 z-30 pointer-events-none"
-                style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 55%)' }}
-              >
-                <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/95 px-3 py-1.5 rounded-full shadow text-xs font-bold text-gray-700">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  Live Preview
-                </div>
-                <a href={project.url} target="_blank" rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4 pointer-events-auto flex items-center gap-2 bg-[#FFD700] text-gray-900 font-bold text-xs px-4 py-2 rounded-xl shadow hover:bg-yellow-300 transition-colors">
-                  Open Site <BsArrowUpRight />
-                </a>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* ── TEXT SIDE ── */}
-        <motion.div
-          animate={{ opacity: hovered ? 0 : 1, width: hovered ? '0%' : '50%' }}
-          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-          className={`relative overflow-hidden bg-white flex-shrink-0 ${isEven ? 'order-2' : 'order-1'}`}
-        >
-          <div className="flex flex-col justify-center p-8 lg:p-10 h-full min-w-[280px]">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest mb-3" style={{ color: project.color }}>
+      {/* Mobile: stacked layout */}
+      {isMobile ? (
+        <div className="flex flex-col">
+          {/* Preview */}
+          <div className="relative w-full overflow-hidden" style={{ height: 220 }}>
+            <div className="absolute top-0 inset-x-0 h-1 z-20" style={{ background: project.color }} />
+            <ProjectPreview project={project} />
+            <div className="absolute inset-0 z-30 pointer-events-none flex items-end justify-end p-3">
+              <a href={project.url} target="_blank" rel="noopener noreferrer"
+                className="pointer-events-auto flex items-center gap-1.5 bg-[#FFD700] text-gray-900 font-bold text-xs px-3 py-1.5 rounded-xl shadow">
+                Open Site <BsArrowUpRight />
+              </a>
+            </div>
+          </div>
+          {/* Text */}
+          <div className="flex flex-col p-6 gap-2">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest" style={{ color: project.color }}>
               {project.tech}
             </span>
-            <h3 className="text-2xl lg:text-3xl font-black text-gray-900 mb-4 leading-tight">
-              {project.title}
-            </h3>
-            <p className="text-gray-500 leading-relaxed mb-6 text-sm lg:text-base">
-              {project.description}
-            </p>
+            <h3 className="text-xl font-black text-gray-900 leading-tight">{project.title}</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">{project.description}</p>
             <a href={project.url} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-bold rounded-xl text-sm hover:bg-gray-800 transition-colors w-fit">
+              className="inline-flex items-center gap-2 mt-2 px-5 py-2.5 bg-gray-900 text-white font-bold rounded-xl text-sm w-fit">
               Live Preview <BsArrowUpRight />
             </a>
           </div>
-        </motion.div>
+        </div>
+      ) : (
+        /* Desktop: side-by-side hover expand */
+        <div className="flex" style={{ minHeight: 420 }}>
+          {/* Preview side */}
+          <motion.div
+            animate={{ width: hovered ? '100%' : '50%' }}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            className={`relative overflow-hidden flex-shrink-0 ${isEven ? 'order-1' : 'order-2'}`}
+            style={{ minHeight: 420 }}
+          >
+            <div className="absolute top-0 inset-x-0 h-1 z-20" style={{ background: project.color }} />
+            <ProjectPreview project={project} />
+            <AnimatePresence>
+              {hovered && (
+                <motion.div
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 z-30 pointer-events-none"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 55%)' }}
+                >
+                  <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/95 px-3 py-1.5 rounded-full shadow text-xs font-bold text-gray-700">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                    Live Preview
+                  </div>
+                  <a href={project.url} target="_blank" rel="noopener noreferrer"
+                    className="absolute bottom-4 right-4 pointer-events-auto flex items-center gap-2 bg-[#FFD700] text-gray-900 font-bold text-xs px-4 py-2 rounded-xl shadow hover:bg-yellow-300 transition-colors">
+                    Open Site <BsArrowUpRight />
+                  </a>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
-      </div>
+          {/* Text side */}
+          <motion.div
+            animate={{ opacity: hovered ? 0 : 1, width: hovered ? '0%' : '50%' }}
+            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+            className={`relative overflow-hidden bg-white flex-shrink-0 ${isEven ? 'order-2' : 'order-1'}`}
+          >
+            <div className="flex flex-col justify-center p-8 lg:p-10 h-full min-w-[280px]">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest mb-3" style={{ color: project.color }}>
+                {project.tech}
+              </span>
+              <h3 className="text-2xl lg:text-3xl font-black text-gray-900 mb-4 leading-tight">
+                {project.title}
+              </h3>
+              <p className="text-gray-500 leading-relaxed mb-6 text-sm lg:text-base">
+                {project.description}
+              </p>
+              <a href={project.url} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-bold rounded-xl text-sm hover:bg-gray-800 transition-colors w-fit">
+                Live Preview <BsArrowUpRight />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </motion.div>
   );
 }
