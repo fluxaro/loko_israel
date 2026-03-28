@@ -25,16 +25,15 @@ const PROJECT_LIST = [
 const PER_PAGE = 4;
 
 function proxyUrl(url) {
-  return `/api/proxy?url=${encodeURIComponent(url)}`;
+  return `https://late-snow-8d7f.israelloko65.workers.dev/?url=${encodeURIComponent(url)}`;
 }
 
 function ProjectPreview({ project }) {
   const [loaded, setLoaded] = useState(false);
   const timerRef = useRef(null);
 
-  // Force-show after 8s — onLoad sometimes doesn't fire for iframes
   useEffect(() => {
-    timerRef.current = setTimeout(() => setLoaded(true), 8000);
+    timerRef.current = setTimeout(() => setLoaded(true), 4000);
     return () => clearTimeout(timerRef.current);
   }, []);
 
@@ -49,6 +48,7 @@ function ProjectPreview({ project }) {
       <iframe
         src={proxyUrl(project.url)}
         title={project.title}
+        loading="eager"
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
         onLoad={() => { clearTimeout(timerRef.current); setLoaded(true); }}
         className="absolute inset-0 border-0"
@@ -58,8 +58,9 @@ function ProjectPreview({ project }) {
           transform: 'scale(0.5)',
           transformOrigin: 'top left',
           opacity: loaded ? 1 : 0,
-          transition: 'opacity 0.4s ease',
+          transition: 'opacity 0.5s ease',
           pointerEvents: 'auto',
+          willChange: 'opacity',
         }}
       />
     </div>
@@ -93,7 +94,7 @@ function ProjectCard({ project, index }) {
         >
           <div className="absolute top-0 inset-x-0 h-1 z-20" style={{ background: project.color }} />
 
-          {inView && <ProjectPreview project={project} />}
+          <ProjectPreview project={project} />
 
           <AnimatePresence>
             {hovered && (
