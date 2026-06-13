@@ -81,7 +81,7 @@ export default function SkillSphereCanvas() {
     <Canvas
       camera={{ position: [0, 0, 5.5], fov: 52 }}
       style={{ background: 'transparent' }}
-      gl={{ alpha: true, antialias: true }}
+      gl={{ alpha: true, antialias: true, powerPreference: 'low-power', failIfMajorPerformanceCaveat: false }}
     >
       <ambientLight intensity={1.2} />
       <directionalLight position={[5, 5, 5]} intensity={0.5} />

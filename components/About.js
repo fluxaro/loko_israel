@@ -196,10 +196,10 @@ export default function About() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('highlights')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-[#8a6d00] transition-colors w-fit"
             >
-              See my journey <BsArrowRight />
+              See what I do <BsArrowRight />
             </motion.button>
           </motion.div>
         </div>

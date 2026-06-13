@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 
-const links = ['About', 'Experience', 'Skills', 'Projects', 'Why Tech', 'Contact'];
+const links = ['About', 'Highlights', 'Skills', 'Projects', 'Why Tech', 'Contact'];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
