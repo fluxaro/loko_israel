@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const links = ['About', 'Highlights', 'Skills', 'Projects', 'Why Tech', 'Contact'];
+  const links = ['About', 'Education', 'Highlights', 'Skills', 'Projects', 'Why Tech', 'Contact'];
 
   useEffect(() => {
     const handleScroll = () => {
