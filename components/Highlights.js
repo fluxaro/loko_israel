@@ -197,7 +197,7 @@ export default function Highlights() {
           </div>
           
           <div className="text-sm text-gray-400">
-            React · Next.js · Node.js · MongoDB · Three.js · Tailwind CSS
+            React.js · TypeScript · Python · Django · Next.js · PostgreSQL · Tailwind CSS
           </div>
         </motion.div>
 

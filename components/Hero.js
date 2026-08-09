@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -25,9 +26,11 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-serif text-6xl sm:text-7xl xl:text-8xl text-white leading-[1.1] mb-6">
-              Building software that matters. <br className="hidden sm:block" />
-              I am <span className="font-serif italic text-accent">Loko Israel</span>.
+            <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-4">
+              Full Stack Developer
+            </span>
+            <h1 className="font-serif text-5xl sm:text-7xl xl:text-8xl text-white leading-[1.1] mb-6">
+              Building scalable web applications, AI platforms &amp; developer tools.
             </h1>
           </motion.div>
 
@@ -36,8 +39,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="font-sans text-gray-500 text-lg sm:text-xl max-w-2xl mb-10">
-              A frontend developer passionate about creating minimal, functional, and visually compelling web experiences.
+            <p className="font-sans text-gray-400 text-lg sm:text-xl max-w-3xl mb-10 leading-relaxed">
+              I am <span className="text-white font-serif italic">Loko Israel</span> — a Full Stack Developer with over 2 years of experience designing, developing, deploying, and maintaining production-ready software using React.js, TypeScript, Django, and Python.
             </p>
           </motion.div>
 
@@ -45,12 +48,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-wrap gap-4"
           >
             <a
               href="#projects"
-              className="inline-block border border-white/20 bg-transparent text-white/80 hover:border-accent hover:text-white px-6 py-3 text-sm font-sans transition-colors"
+              className="inline-flex items-center gap-2 border border-accent bg-accent text-ink hover:bg-accent/90 px-6 py-3 text-sm font-sans font-medium transition-colors"
             >
-              View my work
+              View Projects <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 border border-white/20 bg-transparent text-white/80 hover:border-white hover:text-white px-6 py-3 text-sm font-sans transition-colors"
+            >
+              Get In Touch
             </a>
           </motion.div>
         </div>
