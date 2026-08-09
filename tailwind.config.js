@@ -8,11 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        yellow: { DEFAULT: '#FFD700', 400: '#FFD700', 500: '#FFC200' },
+        accent: '#c8a845',
+        surface: '#f5f2ec',
+        ink: '#1a1a1a',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
     },
   },

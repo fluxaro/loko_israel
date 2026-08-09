@@ -1,12 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --yellow: #FFD700;
-}
 
 * {
   box-sizing: border-box;
@@ -19,71 +13,32 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: #fff;
-  color: #111;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #f5f2ec;
+  color: #1a1a1a;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f5f5f5; }
-::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 3px; }
-
-/* Flowing wave SVG animation */
-@keyframes flowWave {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes flowWaveSlow {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-16px); }
-}
-
-@keyframes grid-move {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
-}
-
-.wave-flow {
-  animation: flowWave 18s linear infinite;
-}
-
-.wave-flow-slow {
-  animation: flowWaveSlow 28s linear infinite;
-}
-
-.wave-flow-med {
-  animation: flowWave 22s linear infinite;
-}
-
-.animate-float { animation: float 4s ease-in-out infinite; }
-
-/* Cursor trail */
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: #FFD700;
-  border-radius: 50%;
+/* Film grain texture overlay */
+body::after {
+  content: '';
   position: fixed;
-  pointer-events: none;
+  inset: 0;
   z-index: 9999;
-  transition: transform 0.1s ease;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
-.cursor-ring {
-  width: 32px;
-  height: 32px;
-  border: 2px solid rgba(255,215,0,0.5);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.15s ease, width 0.2s, height 0.2s;
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f2ec; }
+::-webkit-scrollbar-thumb { background: #c8a845; border-radius: 0; }
+
+/* Selection */
+::selection {
+  background: #c8a845;
+  color: #1a1a1a;
 }
