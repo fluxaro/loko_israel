@@ -179,7 +179,7 @@ export default function SkillsPage() {
               {ARCHITECTURE_PRINCIPLES.map((principle, i) => (
                 <div key={principle.title} className="p-6 bg-[#f5f2ec] border border-zinc-200 rounded-xl flex flex-col justify-between">
                   <div>
-                    <span className="font-mono text-xs text-[#c8a845] font-bold block mb-3">0{i + 1} // PRINCIPLE</span>
+                    <span className="font-mono text-xs text-[#c8a845] font-bold block mb-3">0{i + 1} {'//'} PRINCIPLE</span>
                     <h3 className="font-semibold text-lg text-ink mb-2">{principle.title}</h3>
                     <p className="text-zinc-600 text-sm leading-relaxed font-sans">{principle.desc}</p>
                   </div>

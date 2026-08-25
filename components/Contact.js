@@ -48,9 +48,9 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-2 flex flex-col"
           >
-            <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-6">Let's talk.</h2>
+            <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-6">Let&apos;s talk.</h2>
             <p className="text-gray-500 mb-8 max-w-sm leading-relaxed">
-              I'm open to freelance projects, collaborations, and full-time opportunities. Drop me a message and I'll get back to you within 24 hours.
+              I&apos;m open to freelance projects, collaborations, and full-time opportunities. Drop me a message and I&apos;ll get back to you within 24 hours.
             </p>
             <a href="mailto:israelloko65@gmail.com" className="text-ink font-medium hover:text-accent transition-colors">
               israelloko65@gmail.com
@@ -77,7 +77,7 @@ export default function Contact() {
                     <CheckCircle className="text-ink w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-serif italic text-ink">Message Sent!</h3>
-                  <p className="text-gray-500">Thank you for reaching out. I'll get back to you soon.</p>
+                  <p className="text-gray-500">Thank you for reaching out. I&apos;ll get back to you soon.</p>
                   <button 
                     onClick={() => setStatus('idle')} 
                     className="mt-4 px-6 py-3 bg-ink text-white font-medium text-sm hover:bg-gray-800 transition-colors"

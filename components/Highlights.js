@@ -5,36 +5,37 @@ import { ArrowUpRight } from 'lucide-react';
 
 // Counter component for stats
 const Counter = ({ from = 0, to, duration = 2 }) => {
+  const [count, setCount] = useState(from);
   const nodeRef = useRef(null);
-  const inView = useInView(nodeRef, { once: true, margin: "-50px" });
+  const inView = useInView(nodeRef, { once: true, amount: 0.2 });
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || typeof to !== 'number') return;
     
     let start = from;
     const end = to;
-    if (start === end) return;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
     
     let startTime = null;
     let raf;
     
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const percentage = Math.min(progress / (duration * 1000), 1);
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
       
       // Easing out cubic
-      const easeOut = 1 - Math.pow(1 - percentage, 3);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(start + (end - start) * easeOut);
       
-      if (nodeRef.current) {
-        nodeRef.current.textContent = current;
-      }
+      setCount(current);
       
-      if (percentage < 1) {
+      if (progress < 1) {
         raf = requestAnimationFrame(animate);
-      } else if (nodeRef.current) {
-        nodeRef.current.textContent = end;
+      } else {
+        setCount(end);
       }
     };
     
@@ -42,7 +43,7 @@ const Counter = ({ from = 0, to, duration = 2 }) => {
     return () => cancelAnimationFrame(raf);
   }, [from, to, duration, inView]);
 
-  return <span ref={nodeRef}>{from}</span>;
+  return <span ref={nodeRef}>{count}</span>;
 };
 
 export default function Highlights() {
@@ -222,7 +223,7 @@ export default function Highlights() {
                 className="absolute inset-0"
               >
                 <blockquote className="font-serif italic text-2xl text-ink leading-relaxed mb-6">
-                  "{testimonials[activeTestimonial].quote}"
+                  &ldquo;{testimonials[activeTestimonial].quote}&rdquo;
                 </blockquote>
                 <div>
                   <div className="font-medium text-sm text-ink">{testimonials[activeTestimonial].name}</div>

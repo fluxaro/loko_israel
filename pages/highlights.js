@@ -1,43 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, CheckCircle2, Star, Quote, Award, Sparkles, TrendingUp } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 // Counter component for animated stats
 const Counter = ({ from = 0, to, duration = 2 }) => {
+  const [count, setCount] = useState(from);
   const nodeRef = useRef(null);
-  const inView = useInView(nodeRef, { once: true, margin: "-50px" });
+  const inView = useInView(nodeRef, { once: true, amount: 0.2 });
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || typeof to !== 'number') return;
     
     let start = from;
     const end = to;
-    if (start === end) return;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
     
     let startTime = null;
     let raf;
     
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const percentage = Math.min(progress / (duration * 1000), 1);
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
       
-      const easeOut = 1 - Math.pow(1 - percentage, 3);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(start + (end - start) * easeOut);
       
-      if (nodeRef.current) {
-        nodeRef.current.textContent = current;
-      }
+      setCount(current);
       
-      if (percentage < 1) {
+      if (progress < 1) {
         raf = requestAnimationFrame(animate);
-      } else if (nodeRef.current) {
-        nodeRef.current.textContent = end;
+      } else {
+        setCount(end);
       }
     };
     
@@ -45,7 +45,7 @@ const Counter = ({ from = 0, to, duration = 2 }) => {
     return () => cancelAnimationFrame(raf);
   }, [from, to, duration, inView]);
 
-  return <span ref={nodeRef}>{from}</span>;
+  return <span ref={nodeRef}>{count}</span>;
 };
 
 const SERVICES = [
@@ -177,7 +177,7 @@ export default function HighlightsPage() {
               {SERVICES.map((service) => (
                 <div key={service.num} className="p-8 bg-[#f5f2ec] border border-zinc-200 rounded-2xl flex flex-col justify-between">
                   <div>
-                    <span className="font-mono text-xs text-[#c8a845] font-bold block mb-3">{service.num} // SERVICE</span>
+                    <span className="font-mono text-xs text-[#c8a845] font-bold block mb-3">{service.num} {'//'} SERVICE</span>
                     <h3 className="font-serif italic text-2xl sm:text-3xl text-ink mb-3">{service.title}</h3>
                     <p className="text-zinc-600 text-sm leading-relaxed mb-6 font-sans">{service.desc}</p>
                   </div>

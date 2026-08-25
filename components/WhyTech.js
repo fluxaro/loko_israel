@@ -125,7 +125,7 @@ function BlogSection({ section, index, isActive, sectionRef }) {
           className="mt-6 px-5 py-4 border-l bg-surface border-accent"
         >
           <p className="text-sm font-medium italic text-gray-600">
-            "{section.body[0].split('.')[0]}."
+            &ldquo;{section.body[0].split('.')[0]}.&rdquo;
           </p>
         </div>
       </div>
@@ -224,7 +224,7 @@ export default function WhyTech() {
                 <p className="text-sm font-medium text-ink">Loko Israel</p>
                 <p className="text-xs text-gray-500 mt-0.5">Full-Stack Developer &amp; Instructor</p>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/loko-israel"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-ink hover:text-accent transition-colors"
@@ -256,13 +256,13 @@ export default function WhyTech() {
                 >
                   <div>
                     <p className="font-serif italic text-ink text-xl">Want to build something together?</p>
-                    <p className="text-gray-500 text-sm mt-1">I'm available for freelance projects and collaborations.</p>
+                    <p className="text-gray-500 text-sm mt-1">I&apos;m available for freelance projects and collaborations.</p>
                   </div>
                   <button
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white font-medium text-sm hover:bg-gray-800 transition-colors shrink-0"
                   >
-                    Let's Talk <ArrowRight className="w-4 h-4" />
+                    Let&apos;s Talk <ArrowRight className="w-4 h-4" />
                   </button>
                 </motion.div>
               </div>
