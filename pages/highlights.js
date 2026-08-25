@@ -93,17 +93,17 @@ const STATS = [
 const TESTIMONIALS = [
   {
     quote: "Israel is a rare talent who seamlessly bridges the gap between design and technical execution. His ability to deliver fast, reliable, and scalable web apps has been invaluable to our projects.",
-    name: "David Chen",
+    name: "Chinedu Okafor",
     role: "Lead Product Manager"
   },
   {
     quote: "When we needed to overhaul our entire frontend architecture, Israel was the clear choice. His deep understanding of React and performance optimization resulted in significantly improved load times.",
-    name: "Michael Torres",
+    name: "Tunde Adeyemi",
     role: "Engineering Lead"
   },
   {
     quote: "Not only is Israel an outstanding developer, but he is also an excellent mentor. His guidance helped me master the complexities of modern full-stack development.",
-    name: "Emily Rodriguez",
+    name: "Ngozi Nwosu",
     role: "Junior Developer"
   }
 ];

@@ -76,22 +76,22 @@ export default function Highlights() {
   const testimonials = [
     {
       quote: "Working with Israel has been an absolute pleasure. His ability to translate complex requirements into elegant, high-performing web applications is truly exceptional. He doesn't just write code; he crafts digital experiences that users love.",
-      name: "David Chen",
+      name: "Chinedu Okafor",
       role: "Lead Product Manager"
     },
     {
       quote: "Israel is a rare talent who seamlessly bridges the gap between design and development. The 3D interactive experiences he built for our campaign increased user engagement by over 200%. Highly recommended for any ambitious project.",
-      name: "Sarah Williams",
+      name: "Amara Eze",
       role: "Creative Director"
     },
     {
       quote: "When we needed to overhaul our entire frontend architecture, Israel was the clear choice. His deep understanding of React and performance optimisation resulted in a 3x faster load time and a significantly improved conversion rate.",
-      name: "Michael Torres",
+      name: "Tunde Adeyemi",
       role: "CTO, TechGrowth"
     },
     {
       quote: "Not only is Israel an outstanding developer, but he's also an excellent mentor. His guidance helped me navigate the complexities of modern full-stack development, significantly accelerating my learning curve.",
-      name: "Emily Rodriguez",
+      name: "Ngozi Nwosu",
       role: "Junior Developer"
     }
   ];
