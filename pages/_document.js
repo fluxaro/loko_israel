@@ -9,7 +9,8 @@ export default function Document() {
         <meta name="keywords" content="Loko Israel, Full-Stack Developer, React, Next.js, Three.js, Portfolio" />
         <meta property="og:title" content="Loko Israel | Full-Stack Developer" />
         <meta property="og:description" content="Creator of Interactive, Futuristic Web Experiences" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
