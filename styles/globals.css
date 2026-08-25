@@ -35,7 +35,7 @@ body::after {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f5f2ec; }
-::-webkit-scrollbar-thumb { background: #c8a845; border-radius: 0; }
+::-webkit-scrollbar-thumb { background: #c8a845; border-radius: 9999px; }
 
 /* Selection */
 ::selection {

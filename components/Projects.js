@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 
 const PROJECT_LIST = [
-  { title: 'Resume Builder', tech: 'React, Tailwind CSS', description: 'Build and export professional resumes in minutes. Choose from multiple templates, fill in your details with a live preview, and download a polished PDF.', url: 'https://resume-builder-ten-beta-63.vercel.app/' },
+  { title: 'Resume Builder', tech: 'React, Tailwind CSS', description: 'Build and export professional resumes in minutes. Choose from multiple templates, fill in your details with a live preview, and download a polished PDF.', url: 'https://sieve-inky.vercel.app/' },
   { title: 'CGPA Calculator', tech: 'React, JavaScript', description: 'A smart academic calculator for Nigerian university students. Add courses, assign credit units and letter grades, and instantly compute your semester GPA and cumulative CGPA.', url: 'https://cgpa-calc-two.vercel.app/' },
   { title: 'Apply Bureau', tech: 'Next.js, Node.js, MongoDB', description: 'A modern job application platform connecting candidates with employers. Browse listings, track your applications, and manage your profile from a clean dashboard.', url: 'https://apply-bureau.vercel.app/' },
   { title: 'Latex — Fine Dining', tech: 'React, Tailwind CSS', description: 'A premium restaurant website for Latex, a Nigerian fine-dining brand. Features a hero carousel, menu showcase, chef profiles, gallery, and a table reservation system.', url: 'https://latex-opal.vercel.app/' },
