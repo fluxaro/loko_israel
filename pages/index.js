@@ -8,6 +8,7 @@ import Education from '../components/Education';
 import Highlights from '../components/Highlights';
 import Skills from '../components/Skills';
 import SystemsInDailyUse from '../components/SystemsInDailyUse';
+import Startups from '../components/Startups';
 import Projects from '../components/Projects';
 import WhyTech from '../components/WhyTech';
 import SocialLinks from '../components/SocialLinks';
@@ -32,6 +33,7 @@ export default function Home() {
         <Highlights />
         <Skills />
         <SystemsInDailyUse />
+        <Startups />
         <Projects />
         <WhyTech />
         <SocialLinks />

@@ -83,8 +83,7 @@ export default function Footer() {
             <span className="font-mono text-[10px] sm:text-xs text-[#1a1a1a]/65 uppercase tracking-[0.2em] font-medium block mb-1 select-none">
               CURRENTLY
             </span>
-            <div className="flex items-center justify-end gap-1.5 text-sm sm:text-base font-sans font-semibold text-[#1a1a1a]">
-              <span className="text-sm select-none" role="img" aria-label="sun">☀</span>
+            <div className="flex items-center justify-end text-sm sm:text-base font-sans font-semibold text-[#1a1a1a]">
               <span>Nigeria, {nigeriaTime || '9:17 AM'}</span>
             </div>
           </div>

@@ -9,6 +9,7 @@ export default function Navbar() {
   const router = useRouter();
 
   const navLinks = [
+    { name: 'Startups', href: '/startup' },
     { name: 'Work', href: '/projects' },
     { name: 'Journey', href: '/about' },
     { name: 'Skills', href: '/skills' },
