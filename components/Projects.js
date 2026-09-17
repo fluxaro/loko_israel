@@ -142,63 +142,46 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
-  const [page, setPage] = useState(0);
   const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true });
-
-  const totalPages = Math.ceil(PROJECT_LIST.length / PER_PAGE);
-  const paginated = PROJECT_LIST.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
-
-  const goTo = (p) => {
-    setPage(p);
-    setTimeout(() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  };
+  const topProjects = PROJECT_LIST.slice(0, 4);
 
   return (
-    <section id="projects" ref={ref} className="py-20 lg:py-32 bg-surface relative overflow-hidden">
+    <section id="projects" ref={ref} className="py-20 lg:py-28 bg-surface relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gray-200" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-14">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-gray-400 font-mono text-xs uppercase tracking-widest font-medium">Work</span>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="mb-12">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-accent font-mono text-xs uppercase tracking-widest font-medium">Proof of Work</span>
           </div>
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
               <h2 className="font-serif italic text-4xl lg:text-5xl text-ink">Featured Projects</h2>
-              <p className="text-gray-400 mt-2 text-sm">Selected personal and freelance works.</p>
+              <p className="text-gray-500 mt-2 text-sm sm:text-base">Selected flagship full-stack web applications with live interactive previews.</p>
             </div>
-            <span className="text-sm font-medium text-gray-500">
-              {page + 1} / {totalPages}
-            </span>
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-1 text-xs sm:text-sm font-mono text-ink hover:text-accent font-medium transition-colors border-b border-gray-300 hover:border-accent pb-0.5"
+            >
+              <span>View All 15+ Projects</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
         </motion.div>
 
-        <AnimatePresence mode="wait">
-          <motion.div key={page} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="flex flex-col gap-8">
-            {paginated.map((project, i) => (
-              <ProjectCard key={project.url} project={project} index={i} />
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        <div className="flex items-center justify-center gap-3 mt-14">
-          <button
-            onClick={() => goTo(page - 1)} disabled={page === 0}
-            className="w-10 h-10 border border-gray-200 bg-white flex items-center justify-center text-gray-500 hover:text-ink hover:border-gray-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button key={i} onClick={() => goTo(i)}
-              className={`w-10 h-10 text-sm font-medium transition-colors ${i === page ? 'bg-ink text-white border border-ink' : 'bg-white border border-gray-200 text-gray-500 hover:text-ink hover:border-gray-300'}`}>
-              {i + 1}
-            </button>
+        <div className="flex flex-col gap-8">
+          {topProjects.map((project, i) => (
+            <ProjectCard key={project.url} project={project} index={i} />
           ))}
-          <button
-            onClick={() => goTo(page + 1)} disabled={page === totalPages - 1}
-            className="w-10 h-10 border border-gray-200 bg-white flex items-center justify-center text-gray-500 hover:text-ink hover:border-gray-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
-            <ChevronRight className="w-5 h-5" />
-          </button>
+        </div>
+
+        <div className="flex justify-center mt-12">
+          <a
+            href="/projects"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-ink hover:bg-[#c8a845] text-white hover:text-ink font-mono text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm"
+          >
+            <span>Explore All 15+ Production Apps →</span>
+          </a>
         </div>
 
       </div>

@@ -1,0 +1,67 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 3546 >>
+stream
+BT /F2 18 Tf 50 790 Td (LOKO ISRAEL - FULL-STACK DEVELOPER) Tj ET
+BT /F1 10 Tf 50 768 Td (Email: israelloko65@gmail.com | Portfolio: loko-israel.vercel.app | Location: Nigeria) Tj ET
+BT /F1 10 Tf 50 752 Td (-----------------------------------------------------------------------------------------------------------------) Tj ET
+BT /F2 12 Tf 50 732 Td (EXECUTIVE SUMMARY) Tj ET
+BT /F1 10 Tf 50 714 Td (Full-Stack Developer with 2+ years of experience engineering production-grade web applications,) Tj ET
+BT /F1 10 Tf 50 698 Td (AI platforms, and scalable backend systems using React, Next.js, TypeScript, and Python/Django.) Tj ET
+BT /F1 10 Tf 50 682 Td (Shipped 40+ applications with sub-second latency targets, clean architecture, and modern UX.) Tj ET
+BT /F2 12 Tf 50 652 Td (VENTURES & LEADERSHIP EXPERIENCE) Tj ET
+BT /F2 10 Tf 50 634 Td (Ryport Technologies \(ryport.com.ng\) - Co-Founder & Lead Full-Stack Architect) Tj ET
+BT /F1 9 Tf 60 618 Td (- Engineered financial OS tailored for Nigeria: automatic bank SMS parsing, kobo-precision accounting.) Tj ET
+BT /F1 9 Tf 60 604 Td (- Built sub-second AI CFO conversational agent answering natural language cash flow queries.) Tj ET
+BT /F1 9 Tf 60 590 Td (- Integrated AES-256 encrypted read-only Open Banking pipelines with zero plain-text storage.) Tj ET
+BT /F2 10 Tf 50 568 Td (Digital Fortress - Technical Mentor & Instructor) Tj ET
+BT /F1 9 Tf 60 552 Td (- Mentored 15+ emerging developers in modern React, JavaScript, APIs, and clean software architecture.) Tj ET
+BT /F2 12 Tf 50 524 Td (FEATURED PRODUCTION PROJECTS) Tj ET
+BT /F2 10 Tf 50 506 Td (1. Sieve Engine \(sieve-inky.vercel.app\): High-performance client-side resume compiler.) Tj ET
+BT /F1 9 Tf 60 492 Td (   Sub-second PDF generation, live WYSIWYG formatting, zero server compute cost, ~2.5k daily docs.) Tj ET
+BT /F2 10 Tf 50 474 Td (2. Fuzzi Security Engine \(fuzzi-ten.vercel.app\): 14-dimension fuzzy logic risk scoring platform.) Tj ET
+BT /F1 9 Tf 60 460 Td (   Explainable vector simulation, confidence curves, interactive posture analytics.) Tj ET
+BT /F2 10 Tf 50 442 Td (3. CGPA Calculator \(cgpa-calc-two.vercel.app\): Academic scoring platform for universities.) Tj ET
+BT /F1 9 Tf 60 428 Td (   Dynamic grading scale calculation, credit units modeling, instant semester GPA & CGPA projections.) Tj ET
+BT /F2 10 Tf 50 410 Td (4. Spark AI Platform \(spark-ai-assistant.vercel.app\): Multi-turn LLM chat assistant.) Tj ET
+BT /F1 9 Tf 60 396 Td (   Streaming token responses, conversation memory persistence, dynamic tool calling.) Tj ET
+BT /F2 12 Tf 50 368 Td (TECHNICAL SKILLS & CORE STACK) Tj ET
+BT /F1 9 Tf 50 350 Td (Frontend: React.js, Next.js, TypeScript, JavaScript \(ES6+\), Tailwind CSS, Framer Motion, Three.js) Tj ET
+BT /F1 9 Tf 50 336 Td (Backend & Systems: Python, Django, Django REST Framework, Node.js, Express, RESTful APIs) Tj ET
+BT /F1 9 Tf 50 322 Td (Databases & Tools: PostgreSQL, MongoDB, Supabase, Redis, Git, GitHub Actions, Vercel, Docker) Tj ET
+BT /F2 12 Tf 50 294 Td (EDUCATION & CERTIFICATIONS) Tj ET
+BT /F2 10 Tf 50 276 Td (Bachelor of Science in Computer Science - University of the People \(Currently Enrolled - Year 2\)) Tj ET
+BT /F1 9 Tf 60 258 Td (- Full Stack Web Development Specialization \(React, Django, REST APIs, Python\) [2024-Present]) Tj ET
+BT /F1 9 Tf 60 244 Td (- Frontend Development Specialization \(Component Systems, UX Performance\) [2024]) Tj ET
+BT /F1 9 Tf 60 230 Td (- AI Integration & Modern Software Engineering \(LLM Orchestration, Agent Workflows\) [2025]) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000257 00000 n 
+0000003855 00000 n 
+0000003925 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4000
+%%EOF

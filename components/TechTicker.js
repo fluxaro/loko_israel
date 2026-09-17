@@ -44,8 +44,8 @@ const SKILLS_ICONS = [
   { name: 'Vercel', icon: SiVercel },
 ];
 
-// Duplicate once to ensure continuous flow across any viewport width
-const TICKER_ICONS = [...SKILLS_ICONS, ...SKILLS_ICONS];
+// Single clean pass of the stack (seamless marquee loop with 1 primary pass)
+const TICKER_ICONS = SKILLS_ICONS;
 
 export default function TechTicker() {
   const renderIconGroup = (keyPrefix, ariaHidden = false) => (

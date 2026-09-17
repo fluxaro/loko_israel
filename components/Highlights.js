@@ -1,22 +1,30 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 
-// Counter component for stats
-const Counter = ({ from = 0, to, duration = 2 }) => {
+// Counter component for stats (guaranteed never stuck at 0+)
+const Counter = ({ from = 0, to, duration = 1.8 }) => {
   const [count, setCount] = useState(from);
   const nodeRef = useRef(null);
-  const inView = useInView(nodeRef, { once: true, amount: 0.2 });
+  const inView = useInView(nodeRef, { once: true, margin: "50px 0px" });
 
   useEffect(() => {
-    if (!inView || typeof to !== 'number') return;
+    if (typeof to !== 'number') return;
+    
+    // Safety fallback: ensure counter ALWAYS reaches target value
+    const fallbackTimer = setTimeout(() => {
+      setCount(to);
+    }, 1200);
+
+    if (!inView) {
+      return () => clearTimeout(fallbackTimer);
+    }
     
     let start = from;
     const end = to;
     if (start === end) {
       setCount(end);
-      return;
+      return () => clearTimeout(fallbackTimer);
     }
     
     let startTime = null;
@@ -25,8 +33,6 @@ const Counter = ({ from = 0, to, duration = 2 }) => {
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      
-      // Easing out cubic
       const easeOut = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(start + (end - start) * easeOut);
       
@@ -40,32 +46,19 @@ const Counter = ({ from = 0, to, duration = 2 }) => {
     };
     
     raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      clearTimeout(fallbackTimer);
+      cancelAnimationFrame(raf);
+    };
   }, [from, to, duration, inView]);
 
-  return <span ref={nodeRef}>{count}</span>;
+  return <span ref={nodeRef} className="inline-block min-w-[1ch]">{count}</span>;
 };
 
 export default function Highlights() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  const services = [
-    { title: "Frontend Development", desc: "Pixel-perfect, responsive UIs built with React & Next.js." },
-    { title: "Full-Stack Apps", desc: "End-to-end applications from database schema to deployed product." },
-    { title: "3D & Interactive", desc: "Immersive Three.js experiences and scroll-driven animations." },
-    { title: "Performance & SEO", desc: "Lighthouse-optimised builds and Core Web Vitals." },
-    { title: "UI/UX Design", desc: "Clean, modern interfaces grounded in user behaviour." }
-  ];
-
-  const process = [
-    { num: "01", title: "Discover", desc: "Understanding the problem, goals, and technical requirements." },
-    { num: "02", title: "Design", desc: "Prototyping clean, modern interfaces with user experience in mind." },
-    { num: "03", title: "Build", desc: "Developing scalable and performant solutions using modern web tech." },
-    { num: "04", title: "Optimise", desc: "Refining code, improving accessibility, and maximising performance." },
-    { num: "05", title: "Deploy", desc: "Shipping reliable products with automated CI/CD pipelines." }
-  ];
 
   const stats = [
     { value: 40, label: "Projects Shipped", suffix: "+" },
@@ -120,62 +113,28 @@ export default function Highlights() {
               Milestones &amp; Track Record
             </span>
             <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-3">Highlights</h2>
-            <p className="text-gray-500 text-sm sm:text-base">A deep dive into my work, process, and achievements.</p>
+            <p className="text-gray-500 text-sm sm:text-base">Track record, engineering process, and peer recommendations.</p>
           </motion.div>
         </div>
 
-        {/* 1. Services */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <h3 className="font-serif italic text-3xl text-ink mb-10">What I Build</h3>
-          <div className="flex flex-col">
-            {services.map((service, idx) => (
-              <div key={idx} className={`flex items-start gap-8 py-6 ${idx !== services.length - 1 ? 'border-b border-gray-100' : ''}`}>
-                <div className="text-5xl font-serif text-gray-200 leading-none">
-                  {String(idx + 1).padStart(2, '0')}
-                </div>
-                <div className="pt-1">
-                  <h4 className="text-lg font-medium text-ink">{service.title}</h4>
-                  <p className="text-sm text-gray-500 mt-1">{service.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <div className="h-px bg-gray-200 my-16" />
-
-        {/* 2. Process */}
+        {/* 2. Process (Shrunk to 1 line) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="font-serif italic text-3xl text-ink mb-10">How I Work</h3>
-          <div className="flex flex-col">
-            {process.map((step, idx) => (
-              <div key={idx} className="flex relative pb-10 last:pb-0">
-                {idx !== process.length - 1 && (
-                  <div className="absolute left-[9px] top-6 bottom-0 w-px bg-gray-200" />
-                )}
-                <div className="mr-6 z-10 bg-surface">
-                  <span className="font-mono text-sm text-gray-300 leading-6">{step.num}</span>
-                </div>
-                <div>
-                  <h4 className="font-medium text-ink leading-6">{step.title}</h4>
-                  <p className="text-sm text-gray-500 mt-1">{step.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
+            <h3 className="font-serif italic text-3xl text-ink">How I Work</h3>
+            <span className="font-mono text-xs text-accent font-medium">Discover → Design → Build → Optimise → Deploy</span>
           </div>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-3xl">
+            A disciplined development cycle: understanding the core problem, prototyping intuitive responsive interfaces, writing scalable type-safe code, benchmarking Core Web Vitals, and shipping with automated CI/CD pipelines.
+          </p>
         </motion.div>
 
         <div className="h-px bg-gray-200 my-16" />
 
-        {/* 3. Achievements */}
+        {/* 3. Achievements (By the Numbers) */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -188,7 +147,7 @@ export default function Highlights() {
               <div key={idx} className="flex items-center flex-1">
                 <div className="flex flex-col flex-1">
                   <div className="text-4xl font-serif text-ink">
-                    <Counter to={stat.value} duration={2} />{stat.suffix}
+                    <Counter to={stat.value} duration={1.8} />{stat.suffix}
                   </div>
                   <div className="text-xs text-gray-400 uppercase tracking-wider mt-1">
                     {stat.label}
@@ -248,51 +207,6 @@ export default function Highlights() {
                 aria-label={`Go to testimonial ${idx + 1}`}
               />
             ))}
-          </div>
-        </motion.div>
-
-        <div className="h-px bg-gray-200 my-16" />
-
-        {/* 5. Case Study */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <h3 className="font-serif italic text-3xl text-ink mb-10">Deep Dive</h3>
-          
-          <div className="mb-8">
-            <div className="flex items-baseline justify-between mb-2">
-              <h4 className="text-2xl font-medium text-ink">Fuzzi</h4>
-              <a href="https://fuzzi-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-ink hover:text-accent transition-colors font-mono">
-                View Live <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-            <p className="text-sm text-gray-400">Web Security Intelligence &amp; Fuzzy Risk Scoring</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <div className="md:border-r md:border-gray-200 md:pr-8">
-              <h5 className="font-mono text-xs text-gray-400 uppercase tracking-wider mb-3">Problem</h5>
-              <p className="text-sm text-gray-600 leading-relaxed">Engineering and DevSecOps teams struggle to assess true security posture because traditional vulnerability scanners yield rigid, binary alerts without explainable context or confidence weighting.</p>
-            </div>
-            <div className="md:border-r md:border-gray-200 md:pr-8">
-              <h5 className="font-mono text-xs text-gray-400 uppercase tracking-wider mb-3">Solution</h5>
-              <p className="text-sm text-gray-600 leading-relaxed">Architected an explainable fuzzy-logic engine scoring fourteen distinct security dimensions with interactive vector simulation, confidence curves, and real-time posture analytics.</p>
-            </div>
-            <div>
-              <h5 className="font-mono text-xs text-gray-400 uppercase tracking-wider mb-3">Result</h5>
-              <p className="text-sm text-gray-600 leading-relaxed">Delivers sub-second risk calculations and actionable simulation modeling, cutting false alarm fatigue while enabling teams to pinpoint structural attack surfaces instantly.</p>
-            </div>
-          </div>
-          
-          <div className="space-y-2 font-mono text-xs">
-            <div className="text-gray-600">
-              React · TypeScript · Recharts · Tailwind CSS · Fuzzy Logic Algorithms · Vercel
-            </div>
-            <div className="text-gray-500">
-              Sub-second scoring · 14 Security Vectors · 100% Explainable
-            </div>
           </div>
         </motion.div>
 

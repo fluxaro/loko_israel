@@ -238,6 +238,28 @@ export default function StartupPage() {
               </p>
             </div>
 
+            {/* Problem / Solution / Result Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-14 p-6 sm:p-8 bg-surface border border-gray-200 rounded-xl">
+              <div className="md:border-r md:border-gray-200 md:pr-6">
+                <span className="font-mono text-xs text-accent uppercase tracking-wider block mb-2 font-medium">Problem</span>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Nigerian businesses struggle with fragmented bank alerts, unrecorded cash expenses, and no real-time visibility into operational cash flow or runway.
+                </p>
+              </div>
+              <div className="md:border-r md:border-gray-200 md:pr-6">
+                <span className="font-mono text-xs text-accent uppercase tracking-wider block mb-2 font-medium">Solution</span>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Engineered an automated financial OS that parses bank SMS alerts in kobo, categorizes expenses instantly, and provides an instant conversational AI CFO.
+                </p>
+              </div>
+              <div>
+                <span className="font-mono text-xs text-accent uppercase tracking-wider block mb-2 font-medium">Result</span>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Empowers founders and SMEs to track 30-day runway accurately, eliminate manual bookkeeping, and answer financial questions in seconds.
+                </p>
+              </div>
+            </div>
+
             {/* The 4 Architectural Pillars Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {pillars.map((pillar) => {

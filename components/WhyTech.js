@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -258,12 +259,12 @@ export default function WhyTech() {
                     <p className="font-serif italic text-ink text-xl">Want to build something together?</p>
                     <p className="text-gray-500 text-sm mt-1">I&apos;m available for freelance projects and collaborations.</p>
                   </div>
-                  <button
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  <Link
+                    href="/contact"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-white font-medium text-sm hover:bg-gray-800 transition-colors shrink-0"
                   >
                     Let&apos;s Talk <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </motion.div>
               </div>
             </div>

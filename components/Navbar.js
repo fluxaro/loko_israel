@@ -14,6 +14,7 @@ export default function Navbar() {
     { name: 'Journey', href: '/about' },
     { name: 'Skills', href: '/skills' },
     { name: 'Highlights', href: '/highlights' },
+    { name: 'Why Tech?', href: '/why-tech' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -51,10 +52,14 @@ export default function Navbar() {
         </nav>
 
         {/* Right Pill: Contact & CTA */}
-        <div className="flex items-center gap-2 bg-white/85 backdrop-blur-md border border-zinc-200/80 p-1 sm:pl-3.5 rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
-          <span className="hidden lg:inline text-[11px] font-mono text-zinc-400 pr-1">
-            AVAILABLE // NOW
-          </span>
+        <div className="flex items-center gap-2 bg-white/85 backdrop-blur-md border border-zinc-200/80 p-1 sm:pl-2.5 rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.04)]">
+          <a
+            href="/resume.pdf"
+            download="Loko_Israel_Resume.pdf"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium text-zinc-700 hover:text-ink hover:bg-zinc-100/80 transition-colors"
+          >
+            <span>Resume (PDF)</span>
+          </a>
           <Link
             href="/contact"
             className="bg-[#c8a845] hover:bg-[#b89738] text-[#1a1a1a] px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-sm"
@@ -107,7 +112,15 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              <div className="pt-3 mt-1 border-t border-zinc-100">
+              <div className="pt-3 mt-1 border-t border-zinc-100 flex flex-col gap-2">
+                <a
+                  href="/resume.pdf"
+                  download="Loko_Israel_Resume.pdf"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="bg-white border border-zinc-300 text-[#1a1a1a] text-center py-2.5 rounded-full text-sm font-semibold block w-full shadow-sm"
+                >
+                  Download Resume (PDF)
+                </a>
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}

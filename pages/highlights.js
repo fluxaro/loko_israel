@@ -6,20 +6,29 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, Star, Quote, Award, Sparkles, T
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-// Counter component for animated stats
-const Counter = ({ from = 0, to, duration = 2 }) => {
+// Counter component for animated stats (guaranteed never stuck at 0+)
+const Counter = ({ from = 0, to, duration = 1.8 }) => {
   const [count, setCount] = useState(from);
   const nodeRef = useRef(null);
-  const inView = useInView(nodeRef, { once: true, amount: 0.2 });
+  const inView = useInView(nodeRef, { once: true, margin: "50px 0px" });
 
   useEffect(() => {
-    if (!inView || typeof to !== 'number') return;
+    if (typeof to !== 'number') return;
+    
+    // Safety fallback: ensure counter ALWAYS reaches target value
+    const fallbackTimer = setTimeout(() => {
+      setCount(to);
+    }, 1200);
+
+    if (!inView) {
+      return () => clearTimeout(fallbackTimer);
+    }
     
     let start = from;
     const end = to;
     if (start === end) {
       setCount(end);
-      return;
+      return () => clearTimeout(fallbackTimer);
     }
     
     let startTime = null;
@@ -28,7 +37,6 @@ const Counter = ({ from = 0, to, duration = 2 }) => {
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      
       const easeOut = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(start + (end - start) * easeOut);
       
@@ -42,10 +50,13 @@ const Counter = ({ from = 0, to, duration = 2 }) => {
     };
     
     raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      clearTimeout(fallbackTimer);
+      cancelAnimationFrame(raf);
+    };
   }, [from, to, duration, inView]);
 
-  return <span ref={nodeRef}>{count}</span>;
+  return <span ref={nodeRef} className="inline-block min-w-[1ch]">{count}</span>;
 };
 
 const SERVICES = [

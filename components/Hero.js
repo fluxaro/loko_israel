@@ -1,7 +1,41 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { ArrowRight, FileText } from 'lucide-react';
 import TechTicker from './TechTicker';
+
+// HeroCounter guaranteed never stuck at 0+
+function HeroCounter({ to, duration = 1.8 }) {
+  const [count, setCount] = useState(0);
+  const nodeRef = useRef(null);
+  const inView = useInView(nodeRef, { once: true, margin: '50px 0px' });
+
+  useEffect(() => {
+    if (typeof to !== 'number') return;
+    const fallback = setTimeout(() => setCount(to), 1200);
+    if (!inView) return () => clearTimeout(fallback);
+
+    let startTime = null;
+    let raf;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(to * easeOut));
+      if (progress < 1) {
+        raf = requestAnimationFrame(animate);
+      } else {
+        setCount(to);
+      }
+    };
+    raf = requestAnimationFrame(animate);
+    return () => {
+      clearTimeout(fallback);
+      cancelAnimationFrame(raf);
+    };
+  }, [to, duration, inView]);
+
+  return <span ref={nodeRef} className="inline-block min-w-[1ch]">{count}</span>;
+}
 
 export default function Hero() {
   return (
@@ -100,7 +134,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="flex flex-wrap items-center justify-center gap-3.5 mb-6"
+          className="flex flex-wrap items-center justify-center gap-3.5 mb-8"
         >
           <a
             href="#projects"
@@ -110,11 +144,60 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
           </a>
           <a
+            href="/resume.pdf"
+            download="Loko_Israel_Resume.pdf"
+            className="inline-flex items-center gap-2 bg-[#1a1a1a] hover:bg-[#2d2d2d] text-white px-6 py-3 rounded-full text-sm font-semibold shadow-sm hover:shadow transition-all duration-200"
+          >
+            <FileText className="w-4 h-4 text-[#c8a845]" />
+            <span>Download Resume (PDF)</span>
+          </a>
+          <a
             href="#contact"
             className="inline-flex items-center gap-2 bg-white/90 hover:bg-white border border-zinc-300 hover:border-zinc-400 text-zinc-800 px-6 py-3 rounded-full text-sm font-medium shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200"
           >
             Get In Touch
           </a>
+        </motion.div>
+
+        {/* By the Numbers - Proof of Work Stat Counters */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="w-full max-w-2xl mx-auto pt-6 border-t border-zinc-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-center mb-6"
+        >
+          <div>
+            <div className="text-3xl sm:text-4xl font-serif text-ink">
+              <HeroCounter to={40} />+
+            </div>
+            <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mt-1">
+              Projects Shipped
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-serif text-ink">
+              <HeroCounter to={2} />+
+            </div>
+            <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mt-1">
+              Years Building
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-serif text-ink">
+              <HeroCounter to={10} />+
+            </div>
+            <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mt-1">
+              Core Technologies
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-serif text-ink">
+              <HeroCounter to={15} />+
+            </div>
+            <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider mt-1">
+              Students Mentored
+            </div>
+          </div>
         </motion.div>
       </div>
 

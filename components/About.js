@@ -4,19 +4,19 @@ import { ArrowRight } from 'lucide-react';
 
 const CERTIFICATIONS = [
   {
-    title: 'Full Stack Web Development (Self-Learning)',
+    title: 'Full Stack Web Development',
     period: '2024–Present',
-    description: 'Gained hands-on experience building full-stack web applications using React.js, Django, Python, TypeScript, Tailwind CSS, REST APIs, Git, and modern deployment workflows.'
+    description: 'Hands-on architecture with React.js, Django, Python, TypeScript & REST APIs'
   },
   {
     title: 'Frontend Development Specialization',
     period: '2024',
-    description: 'Developed advanced frontend applications using React.js, JavaScript, Tailwind CSS, Framer Motion, and reusable component architecture while focusing on responsive design and performance optimization.'
+    description: 'Responsive component systems, Framer Motion micro-interactions & Web Vitals'
   },
   {
-    title: 'AI Integration and Modern Software Engineering',
+    title: 'AI Integration & Modern Systems',
     period: '2025',
-    description: 'Built AI-powered web applications and developer tools by integrating modern AI technologies into production-ready software, focusing on automation, intelligent workflows, and scalable architecture.'
+    description: 'Production AI workflows, conversational agents & intelligent automation'
   }
 ];
 
@@ -36,7 +36,7 @@ export default function About() {
         >
           <div className="relative z-10">
             {/* Bio Section */}
-            <div className="max-w-3xl mb-14 sm:mb-16">
+            <div className="max-w-3xl mb-12 sm:mb-14">
               <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2 font-medium">
                 Introduction
               </span>
@@ -44,40 +44,31 @@ export default function About() {
                 About Me
               </h2>
 
-              <p className="text-gray-700 text-lg leading-relaxed mb-6 font-medium">
-                A Full Stack Developer with over 2 years of experience building scalable web applications, 
-                AI-powered platforms, and developer tools. Experienced in designing, developing, deploying, and maintaining 
-                production-ready software using React.js, TypeScript, Django, Python, and modern web technologies.
-              </p>
-
-              <p className="text-gray-500 leading-relaxed mb-6">
-                Skilled in building secure, responsive, and user-focused applications while transforming complex business 
-                requirements into reliable software solutions. Passionate about solving real-world problems through technology, 
-                leading development projects, and delivering high-quality digital products across multiple industries.
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed font-normal">
+                Full-Stack Developer with 2+ years of experience engineering production-grade web applications, AI platforms, and scalable backend systems using React, Next.js, TypeScript, and Python/Django. Specialized in architecting secure, responsive software from database schema to automated CI/CD deployment with strict sub-second latency targets. Passionate about solving real-world friction through clean code and user-centered design.
               </p>
             </div>
 
-            {/* Certifications & Professional Development */}
-            <div className="pt-12 border-t border-gray-100 max-w-4xl">
-              <div className="mb-8">
-                <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2">Continuous Learning</span>
-                <h3 className="font-serif italic text-3xl text-ink">
+            {/* Certifications & Professional Development (Single line per cert) */}
+            <div className="pt-10 border-t border-gray-100 max-w-4xl">
+              <div className="mb-6">
+                <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-1">Continuous Learning</span>
+                <h3 className="font-serif italic text-2xl sm:text-3xl text-ink">
                   Professional Development &amp; Certifications
                 </h3>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-3">
                 {CERTIFICATIONS.map((cert) => (
-                  <div key={cert.title} className="border-l-2 border-accent/60 pl-6 relative">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-                      <h4 className="font-medium text-lg text-ink">{cert.title}</h4>
-                      <span className="font-mono text-xs text-gray-400 border border-gray-200 px-2.5 py-0.5 self-start sm:self-auto">
-                        [{cert.period}]
-                      </span>
+                  <div key={cert.title} className="flex flex-col sm:flex-row sm:items-baseline justify-between py-2 border-b border-gray-100 text-sm gap-1">
+                    <div className="text-gray-700">
+                      <strong className="text-ink font-medium">{cert.title}</strong>
+                      <span className="text-gray-400 mx-2 hidden sm:inline">·</span>
+                      <span className="text-gray-500 text-xs sm:text-sm">{cert.description}</span>
                     </div>
-                    <p className="text-gray-500 text-sm leading-relaxed">
-                      • {cert.description}
-                    </p>
+                    <span className="font-mono text-xs text-gray-400 shrink-0">
+                      [{cert.period}]
+                    </span>
                   </div>
                 ))}
               </div>
