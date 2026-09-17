@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import SlantedMarquee from '../components/SlantedMarquee';
 import Education from '../components/Education';
 import Highlights from '../components/Highlights';
 import Skills from '../components/Skills';
@@ -25,6 +26,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <SlantedMarquee />
         <Education />
         <Highlights />
         <Skills />
