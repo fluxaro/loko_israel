@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import TechTicker from './TechTicker';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-[#f5f2ec] text-[#1a1a1a] flex flex-col justify-between overflow-hidden pt-28 sm:pt-36 pb-16">
+    <section className="relative min-h-screen bg-[#f5f2ec] text-[#1a1a1a] flex flex-col justify-between overflow-hidden pt-24 sm:pt-28 pb-4">
       {/* Subtle technical background grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.04]"
@@ -115,6 +116,11 @@ export default function Hero() {
             Get In Touch
           </a>
         </motion.div>
+      </div>
+
+      {/* The Stack It Runs On - Tech Marquee */}
+      <div className="w-full relative z-20 mt-auto">
+        <TechTicker />
       </div>
     </section>
   );

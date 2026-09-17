@@ -2,7 +2,6 @@ import Head from 'next/head';
 
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import TechTicker from '../components/TechTicker';
 import About from '../components/About';
 import Education from '../components/Education';
 import Highlights from '../components/Highlights';
@@ -25,7 +24,6 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <TechTicker />
         <About />
         <Education />
         <Highlights />
