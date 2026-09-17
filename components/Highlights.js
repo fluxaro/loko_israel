@@ -263,35 +263,35 @@ export default function Highlights() {
           
           <div className="mb-8">
             <div className="flex items-baseline justify-between mb-2">
-              <h4 className="text-2xl font-medium text-ink">Apply Bureau</h4>
-              <a href="https://apply-bureau.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-ink hover:text-accent transition-colors">
+              <h4 className="text-2xl font-medium text-ink">Fuzzi</h4>
+              <a href="https://fuzzi-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-ink hover:text-accent transition-colors font-mono">
                 View Live <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
-            <p className="text-sm text-gray-400">Full-Stack Job Platform</p>
+            <p className="text-sm text-gray-400">Web Security Intelligence &amp; Fuzzy Risk Scoring</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             <div className="md:border-r md:border-gray-200 md:pr-8">
               <h5 className="font-mono text-xs text-gray-400 uppercase tracking-wider mb-3">Problem</h5>
-              <p className="text-sm text-gray-600 leading-relaxed">Job seekers needed a centralised way to track applications, manage interview schedules, and analyse their success rates across different platforms without using complex spreadsheets.</p>
+              <p className="text-sm text-gray-600 leading-relaxed">Engineering and DevSecOps teams struggle to assess true security posture because traditional vulnerability scanners yield rigid, binary alerts without explainable context or confidence weighting.</p>
             </div>
             <div className="md:border-r md:border-gray-200 md:pr-8">
               <h5 className="font-mono text-xs text-gray-400 uppercase tracking-wider mb-3">Solution</h5>
-              <p className="text-sm text-gray-600 leading-relaxed">Developed a comprehensive dashboard with real-time updates, drag-and-drop Kanban boards, and automated email parsing to instantly log new job applications.</p>
+              <p className="text-sm text-gray-600 leading-relaxed">Architected an explainable fuzzy-logic engine scoring fourteen distinct security dimensions with interactive vector simulation, confidence curves, and real-time posture analytics.</p>
             </div>
             <div>
               <h5 className="font-mono text-xs text-gray-400 uppercase tracking-wider mb-3">Result</h5>
-              <p className="text-sm text-gray-600 leading-relaxed">Grew to 500+ active users in the first month. Reduced time spent tracking applications by 75% on average, leading to a higher volume of targeted applications per user.</p>
+              <p className="text-sm text-gray-600 leading-relaxed">Delivers sub-second risk calculations and actionable simulation modeling, cutting false alarm fatigue while enabling teams to pinpoint structural attack surfaces instantly.</p>
             </div>
           </div>
           
-          <div className="space-y-2">
-            <div className="text-sm text-gray-600">
-              Next.js · Node.js · MongoDB · Tailwind · JWT Auth · Vercel
+          <div className="space-y-2 font-mono text-xs">
+            <div className="text-gray-600">
+              React · TypeScript · Recharts · Tailwind CSS · Fuzzy Logic Algorithms · Vercel
             </div>
-            <div className="text-sm text-gray-500">
-              Ship time: &lt;3 weeks · Lighthouse: 94+ · Mobile-first: 100%
+            <div className="text-gray-500">
+              Sub-second scoring · 14 Security Vectors · 100% Explainable
             </div>
           </div>
         </motion.div>

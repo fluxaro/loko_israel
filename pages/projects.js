@@ -17,13 +17,13 @@ const ALL_PROJECTS = [
     highlight: 'Instant PDF export & real-time client-side preview engine'
   },
   {
-    title: 'Apply Bureau',
-    category: 'Full-Stack',
-    tech: ['Next.js', 'Node.js', 'MongoDB', 'JWT Auth', 'Tailwind CSS'],
-    description: 'A modern job application platform connecting candidates with employers. Browse listings, track applications with drag-and-drop Kanban, and manage profiles.',
-    url: 'https://apply-bureau.vercel.app/',
+    title: 'Fuzzi',
+    category: 'Security & Analytics',
+    tech: ['React', 'TypeScript', 'Recharts', 'Tailwind CSS', 'Fuzzy Logic'],
+    description: 'Fuzzy-logic scoring across fourteen web security dimensions — confidence-weighted risk you can explain, simulate, and monitor in real time.',
+    url: 'https://fuzzi-ten.vercel.app/',
     featured: true,
-    highlight: '500+ active users, 75% reduction in application tracking time'
+    highlight: '14-dimension security vector scoring & explainable risk simulator'
   },
   {
     title: 'Spark AI Assistant',
@@ -141,10 +141,19 @@ const ALL_PROJECTS = [
     url: 'https://orji-michael.vercel.app/',
     featured: false,
     highlight: 'Editorial design showcase and interactive resume timeline'
+  },
+  {
+    title: 'Apply Bureau',
+    category: 'Full-Stack',
+    tech: ['Next.js', 'Node.js', 'MongoDB', 'JWT Auth', 'Tailwind CSS'],
+    description: 'A modern job application platform connecting candidates with employers. Browse listings, track applications with drag-and-drop Kanban, and manage profiles.',
+    url: 'https://apply-bureau.vercel.app/',
+    featured: false,
+    highlight: '500+ active users, 75% reduction in application tracking time'
   }
 ];
 
-const CATEGORIES = ['All', 'Full-Stack', 'AI & APIs', 'Frontend & 3D', 'E-Commerce', 'Utilities'];
+const CATEGORIES = ['All', 'Full-Stack', 'AI & APIs', 'Frontend & 3D', 'E-Commerce', 'Security & Analytics', 'Utilities'];
 
 function proxyUrl(url) {
   return `https://late-snow-8d7f.israelloko65.workers.dev/?url=${encodeURIComponent(url)}`;
