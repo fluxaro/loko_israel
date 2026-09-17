@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Copy, Check } from 'lucide-react';
 import { FaLinkedinIn, FaGithub, FaXTwitter, FaEnvelope } from 'react-icons/fa6';
@@ -6,6 +6,28 @@ import { FaLinkedinIn, FaGithub, FaXTwitter, FaEnvelope } from 'react-icons/fa6'
 export default function Footer() {
   const [activeTab, setActiveTab] = useState('project');
   const [copied, setCopied] = useState(false);
+  const [nigeriaTime, setNigeriaTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      try {
+        const formatted = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'Africa/Lagos',
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true,
+        }).format(new Date());
+        setNigeriaTime(formatted);
+      } catch {
+        const now = new Date();
+        setNigeriaTime(now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }));
+      }
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -43,9 +65,31 @@ export default function Footer() {
   ];
 
   return (
-    <footer id="footer" className="relative w-full bg-[#c8a845] text-[#1a1a1a] pt-20 sm:pt-28 pb-12 sm:pb-16 overflow-hidden select-none">
+    <footer id="footer" className="relative w-full bg-[#c8a845] text-[#1a1a1a] pt-16 sm:pt-20 pb-12 sm:pb-16 overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
+        {/* Top Metadata Header: Last Updated & Currently in Nigeria */}
+        <div className="flex items-center justify-between w-full border-b border-[#1a1a1a]/15 pb-8 mb-10 sm:mb-14">
+          <div>
+            <span className="font-mono text-[10px] sm:text-xs text-[#1a1a1a]/65 uppercase tracking-[0.2em] font-medium block mb-1 select-none">
+              LAST UPDATED
+            </span>
+            <p className="text-sm sm:text-base font-sans font-semibold text-[#1a1a1a]">
+              September 17, 2026
+            </p>
+          </div>
+
+          <div className="text-right">
+            <span className="font-mono text-[10px] sm:text-xs text-[#1a1a1a]/65 uppercase tracking-[0.2em] font-medium block mb-1 select-none">
+              CURRENTLY
+            </span>
+            <div className="flex items-center justify-end gap-1.5 text-sm sm:text-base font-sans font-semibold text-[#1a1a1a]">
+              <span className="text-sm select-none" role="img" aria-label="sun">☀</span>
+              <span>Nigeria, {nigeriaTime || '9:17 AM'}</span>
+            </div>
+          </div>
+        </div>
+
         {/* Top Interactive CTA: "I'm here to [start a project] [hire] [just connect]" */}
         <div className="mb-6 flex flex-wrap items-center gap-3">
           <span className="font-serif italic text-2xl sm:text-3xl text-[#1a1a1a] mr-2">

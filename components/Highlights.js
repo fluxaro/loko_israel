@@ -105,18 +105,22 @@ export default function Highlights() {
   }, [testimonials.length]);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-surface" id="highlights">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section ref={sectionRef} className="py-24 sm:py-28 bg-surface relative" id="highlights">
+      <div className="absolute top-0 inset-x-0 h-px bg-gray-200" />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
-        <div className="mb-20">
+        <div className="mb-14 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-4">Highlights</h2>
-            <p className="text-gray-400 text-sm">A deep dive into my work, process, and achievements.</p>
+            <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2 font-medium">
+              Milestones &amp; Track Record
+            </span>
+            <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-3">Highlights</h2>
+            <p className="text-gray-500 text-sm sm:text-base">A deep dive into my work, process, and achievements.</p>
           </motion.div>
         </div>
 

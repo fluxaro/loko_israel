@@ -49,8 +49,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="w-full my-2 sm:my-3"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.03em] text-[#1a1a1a] leading-none font-display">
-            Loko <span className="font-serif italic font-normal text-[#c8a845]">Israel</span>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.03em] text-ink leading-none font-display">
+            Loko <span className="font-serif italic font-normal text-accent">Israel</span>
           </h1>
         </motion.div>
 
@@ -59,10 +59,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#1a1a1a] font-normal tracking-tight mt-4 sm:mt-6 max-w-3xl leading-snug"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-ink font-normal tracking-tight mt-4 sm:mt-5 max-w-3xl leading-snug"
         >
           Engineering{' '}
-          <span className="font-serif italic text-[#c8a845] font-normal text-2xl sm:text-3xl md:text-4xl lg:text-5xl px-0.5">
+          <span className="font-serif italic text-accent font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl px-0.5">
             production-grade
           </span>{' '}
           web applications, AI platforms &amp; scalable backend systems.

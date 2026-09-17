@@ -24,26 +24,23 @@ export default function About() {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
-    <section id="about" ref={ref} className="py-28 bg-white relative overflow-hidden">
+    <section id="about" ref={ref} className="py-24 sm:py-28 bg-white relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gray-200" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
           className="relative"
         >
-          {/* Decorative 01 */}
-          <div className="absolute -top-16 -left-8 text-[12rem] font-serif text-gray-100 leading-none select-none z-0">
-            01
-          </div>
-
           <div className="relative z-10">
             {/* Bio Section */}
-            <div className="max-w-3xl mb-16">
-              <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2">Introduction</span>
-              <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-8">
+            <div className="max-w-3xl mb-14 sm:mb-16">
+              <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2 font-medium">
+                Introduction
+              </span>
+              <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-6">
                 About Me
               </h2>
 

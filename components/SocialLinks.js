@@ -14,17 +14,21 @@ export default function SocialLinks() {
   const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
 
   return (
-    <section id="social-links" ref={ref} className="py-24 bg-surface relative">
+    <section id="social-links" ref={ref} className="py-24 sm:py-28 bg-surface relative">
       <div className="absolute top-0 inset-x-0 h-px bg-gray-200" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-8"
+          className="mb-10 sm:mb-12"
         >
-          <h2 className="font-serif italic text-4xl text-ink">Connect</h2>
+          <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2 font-medium">
+            Network
+          </span>
+          <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-3">Connect</h2>
+          <p className="text-gray-500 text-sm sm:text-base">Find me across the web or reach out directly.</p>
         </motion.div>
 
         <motion.div 

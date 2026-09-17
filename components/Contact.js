@@ -35,11 +35,11 @@ export default function Contact() {
   const inputBase = 'w-full px-4 py-3 bg-white border border-gray-200 text-ink placeholder-gray-400 focus:outline-none focus:border-ink transition-colors text-sm';
 
   return (
-    <section id="contact" ref={ref} className="py-28 bg-white relative">
+    <section id="contact" ref={ref} className="py-24 sm:py-28 bg-white relative">
       <div className="absolute top-0 inset-x-0 h-px bg-gray-200" />
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           
           {/* Left: Heading Area */}
           <motion.div 
@@ -48,11 +48,14 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-2 flex flex-col"
           >
-            <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-6">Let&apos;s talk.</h2>
+            <span className="font-mono text-xs text-accent uppercase tracking-widest block mb-2 font-medium">
+              Get In Touch
+            </span>
+            <h2 className="font-serif italic text-4xl lg:text-5xl text-ink mb-4">Let&apos;s talk.</h2>
             <p className="text-gray-500 mb-8 max-w-sm leading-relaxed">
               I&apos;m open to freelance projects, collaborations, and full-time opportunities. Drop me a message and I&apos;ll get back to you within 24 hours.
             </p>
-            <a href="mailto:israelloko65@gmail.com" className="text-ink font-medium hover:text-accent transition-colors">
+            <a href="mailto:israelloko65@gmail.com" className="text-ink font-medium hover:text-accent transition-colors font-mono text-sm">
               israelloko65@gmail.com
             </a>
           </motion.div>

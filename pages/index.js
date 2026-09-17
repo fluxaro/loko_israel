@@ -7,6 +7,7 @@ import SlantedMarquee from '../components/SlantedMarquee';
 import Education from '../components/Education';
 import Highlights from '../components/Highlights';
 import Skills from '../components/Skills';
+import SystemsInDailyUse from '../components/SystemsInDailyUse';
 import Projects from '../components/Projects';
 import WhyTech from '../components/WhyTech';
 import SocialLinks from '../components/SocialLinks';
@@ -30,6 +31,7 @@ export default function Home() {
         <Education />
         <Highlights />
         <Skills />
+        <SystemsInDailyUse />
         <Projects />
         <WhyTech />
         <SocialLinks />
